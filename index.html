@@ -23,22 +23,25 @@
         </label>
 
         <label>
-            Dato:<br>
+            Dato <span style="color: red;">*</span><br>
             <input type="date" id="date" required>
         </label>
 
         <label>
-            Starttidspunkt:<br>
+            Starttidspunkt <span style="color: red;">*</span><br>
             <input type="time" id="start" required>
         </label>
 
         <label>
-            Sluttidspunkt:<br>
+            Sluttidspunkt <span style="color: red;">*</span><br>
             <input type="time" id="end" required>
         </label>
 
         <label>
-            Heraf timer på vagtværelse: (hvis de tæller med, så lad den stå tom)<br>
+            Heraf timer på vagtværelse: <br><span style="color: grey; font-weight: normal;">
+                Hvis timer på værelse tæller
+                i din lokaleaftale, kan du undlade at udfylde. Hvis du er i gang med at indtaste en fremtidig vagt,
+                anbefaler vi at angive din typiske "worst case" f.eks. 5 timer på vagtværelse.</span><br>
             <input type="number" name="roomtime" id="roomtime" min="0" step="0.25" />
         </label>
 
@@ -61,6 +64,7 @@
     </table>
 
     <p>Samlet antal timer i år: <strong id="total-hours">0</strong> / 300</p>
+    <button onclick="clearStorage()">Ryd al data</button>
 
     <script src="script.js"></script>
 </body>
