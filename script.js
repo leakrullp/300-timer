@@ -48,6 +48,7 @@ function renderShifts() {
 
     const row = document.createElement("tr");
     row.innerHTML = `
+      <td>${index + 1}</td>
       <td>${s.date}</td>
       <td>${s.start}</td>
       <td>${s.end}</td>

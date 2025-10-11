@@ -50,6 +50,12 @@ label {
   margin-bottom: 0.5rem;
 }
 
+th,
+td {
+  padding: 0.125rem 0.5rem;
+  text-align: left;
+}
+
 @media (max-width: 600px) {
   form {
     padding: 1.5rem;
