@@ -42,7 +42,7 @@ function renderShifts() {
   shifts.forEach((s, index) => {
     const baseHours = calculateHours(s.start, s.end);
     const room = Number(s.roomtime) || 0;
-    const totalHours = includeRoomtime ? baseHours - room : baseHours;
+    const totalHours = includeRoomtime ? baseHours : baseHours - room;
 
     total += totalHours;
 
@@ -53,7 +53,7 @@ function renderShifts() {
       <td>${s.end}</td>
       <td>${room.toFixed(2)}</td>
       <td>${totalHours.toFixed(2)}</td>
-      <td><button type="button" onclick="deleteShift(${index})">🗑️</button></td>
+      <td><button type="button" onclick="deleteShift(${index})">Fjern vagt</button></td>
     `;
     list.appendChild(row);
   });
@@ -63,6 +63,7 @@ function renderShifts() {
 
 function clearStorage() {
   localStorage.clear();
+  location.reload();
 }
 
 window.deleteShift = function (index) {
@@ -82,8 +83,10 @@ form.addEventListener("submit", (e) => {
   shifts.push({ date, start, end, roomtime });
   saveShifts();
   renderShifts();
-  form.reset();
-  // keep the checkbox state as-is (do not reset it)
+
+  const currentPolicy = includeRoomCheckbox.checked;
+  //form.reset();
+  includeRoomCheckbox.checked = currentPolicy;
 });
 
 renderShifts();
