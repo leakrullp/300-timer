@@ -49,3 +49,42 @@ label {
   font-weight: 500;
   margin-bottom: 0.5rem;
 }
+
+@media (max-width: 600px) {
+  form {
+    padding: 1.5rem;
+  }
+  h1 {
+    font-size: 1.4rem;
+  }
+  button {
+    min-height: 52px;
+    min-width: 120px;
+  }
+}
+
+@media print {
+  @page {
+    margin: 48px;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  body * {
+    visibility: hidden;
+  }
+  #printable-table,
+  #printable-table * {
+    visibility: visible;
+  }
+  #printable-table {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    page-break-inside: avoid;
+  }
+}
