@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Shift Hour Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <h1>Vagttillægs-tracker</h1>
+
+    <form id="shift-form">
+
+        <label>
+            <input type="checkbox" name="visible" value="yes">
+            Timer på vagtværelse tæller med (dette vil fremgå af din lokalaftale)
+        </label>
+
+        <label>
+            Dato:<br>
+            <input type="date" id="date" required>
+        </label>
+
+        <label>
+            Starttidspunkt:<br>
+            <input type="time" id="start" required>
+        </label>
+
+        <label>
+            Sluttidspunkt:<br>
+            <input type="time" id="end" required>
+        </label>
+
+        <label>
+            Heraf timer på vagtværelse: (hvis de tæller med, så lad den stå tom)<br>
+            <input type="number" name="roomtime" id="roomtime" min="0" step="0.25" />
+        </label>
+
+        <button type="submit">Tilføj vagt</button>
+    </form>
+
+    <h2>Mine vagter</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Dato</th>
+                <th>Start</th>
+                <th>Slut</th>
+                <th>Timer på værelse</th>
+                <th>Tillægsgivende timer i alt</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="shift-list"></tbody>
+    </table>
+
+    <p>Samlet antal timer i år: <strong id="total-hours">0</strong> / 300</p>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
