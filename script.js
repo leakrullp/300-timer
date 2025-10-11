@@ -66,6 +66,10 @@ function clearStorage() {
   location.reload();
 }
 
+function printPage() {
+  window.print();
+}
+
 window.deleteShift = function (index) {
   shifts.splice(index, 1);
   saveShifts();

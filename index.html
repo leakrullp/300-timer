@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Shift Hour Calculator</title>
+    <title>Tillægsberegner – 300 timer</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <h1>Vagttillægs-tracker</h1>
+    <h1>Tillægsberegner – 300 timer</h1>
 
     <form id="shift-form">
 
@@ -48,23 +48,26 @@
         <button type="submit">Tilføj vagt</button>
     </form>
 
-    <h2>Mine vagter</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Dato</th>
-                <th>Start</th>
-                <th>Slut</th>
-                <th>Timer på værelse</th>
-                <th>Tillægsgivende timer i alt</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody id="shift-list"></tbody>
-    </table>
+    <div id="printable-table">
+        <h2>Mine vagter</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Dato</th>
+                    <th>Start</th>
+                    <th>Slut</th>
+                    <th>Timer på værelse</th>
+                    <th>Tillægsgivende timer i alt</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="shift-list"></tbody>
+        </table>
+        <p>Samlet antal timer i år: <strong id="total-hours">0</strong> / 300</p>
+    </div>
 
-    <p>Samlet antal timer i år: <strong id="total-hours">0</strong> / 300</p>
-    <button onclick="clearStorage()">Ryd al data</button>
+    <button onclick="clearStorage()">Ryd al data</button><br>
+    <button onclick="printPage()">🖨️ Print mine vagter ud</button>
 
     <script src="script.js"></script>
 </body>
