@@ -6,21 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Tillægsberegner – 300 timer</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="navbar.css">
     <link rel="stylesheet" href="styleguide.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
 
-<header>
+<!-- <header class="navbar">
+    <div class="navbar-container">
+        <div class="navbar-logo">
+            <img src="./assets/ANSPL-logo.svg" alt="Danske Anæstesisygeplejerskers logo" />
+        </div>
 
-</header>
+        <nav class="navbar-links">
+            <a href="#howto">Sådan gør du</a>
+            <a href="#aboutus">Hvem vi er</a>
+
+
+            <a href="https://selvbetjening.winkas.net/tilmelding.asp?wkid=215280015&navid=3">
+                <button class="secondary-btn">Meld dig ind</button>
+            </a>
+
+        </nav>
+    </div>
+</header> -->
 
 <body>
     <div class="layout">
 
         <!-- Form -->
         <form class="form-section" id="shift-form">
-            <h1>Indtast timer</h1>
+            <div class="title-w-btns">
+                <h1>Indtast timer</h1>
+            </div>
 
             <label>
                 Dato <span style="color: red;">*</span><br>
@@ -76,7 +94,7 @@
             <h2>Samlet antal timer i år: <strong id="total-hours">0</strong> / 300</h2>
             <div class="table-wrapper">
 
-                <table>
+                <table class="shift-table">
                     <thead>
                         <tr>
                             <th>Nr</th>

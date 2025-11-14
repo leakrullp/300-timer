@@ -1,23 +1,57 @@
 @import "styleguide.css";
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   font-family: "Barlow", system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
     sans-serif;
   background-color: rgb(250, 250, 250);
   color: var(--primary-text);
-
-  min-height: 100vh;
   padding: 1rem;
+  min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   justify-content: flex-start;
+  margin: 0;
+  padding: 0;
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+.navbar-container {
+  width: 100%;
+  margin: 0 auto;
+  padding-inline: 0rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #ccc;
+}
+
+.navbar-logo img {
+  height: 42px;
+  width: auto;
+  display: block;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.navbar-links a {
+  text-decoration: none;
+  color: var(--primary-text);
+  font-weight: 700;
+  transition: color 0.2s;
+}
+
+.navbar-links a:hover {
+  color: #006e5e;
 }
 
 h1 {
@@ -33,6 +67,7 @@ h1 {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  padding-bottom: 1rem;
 }
 
 h2 {
@@ -127,6 +162,14 @@ table {
   word-wrap: break-word;
 }
 
+.shift-table td:first-child {
+  /* Set a narrow width. Use a small value like 20px, 3em, or 5% */
+  width: 5%;
+  /* OR better, use a minimum width to ensure it never gets too wide */
+  /* Also, center the text for better appearance */
+  text-align: center;
+}
+
 .table-wrapper {
   width: 100%;
   overflow-x: auto; /* enables horizontal scrolling if table is wider */
@@ -149,6 +192,8 @@ td {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  max-width: 1256px;
+  margin: 24px auto;
 }
 
 @media (min-width: 1080px) {
@@ -170,6 +215,9 @@ td {
 }
 
 @media (max-width: 600px) {
+  .layout {
+    padding: 16px;
+  }
   form {
     padding: 1.5rem;
   }
