@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Tillægsberegner – 300 timer</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styleguide.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -14,63 +15,85 @@
 </head>
 
 <body>
-    <h1>Tillægsberegner – 300 timer</h1>
+    <div class="layout">
 
-    <form id="shift-form">
+        <!-- Form -->
+        <form class="form-section" id="shift-form">
+            <h1>Indtast timer</h1>
 
-        <label>
-            <input type="checkbox" name="visible" value="yes">
-            Timer på vagtværelse tæller med (dette vil fremgå af din lokalaftale)
-        </label>
+            <label>
+                Dato <span style="color: red;">*</span><br>
+                <input type="date" id="date" required>
+            </label>
 
-        <label>
-            Dato <span style="color: red;">*</span><br>
-            <input type="date" id="date" required>
-        </label>
+            <div class="form-group">
+                <label>
+                    Starttidspunkt <span style="color: red;">*</span><br>
+                    <input type="time" id="start" required>
+                </label>
 
-        <label>
-            Starttidspunkt <span style="color: red;">*</span><br>
-            <input type="time" id="start" required>
-        </label>
+                <label>
+                    Sluttidspunkt <span style="color: red;">*</span><br>
+                    <input type="time" id="end" required>
+                </label>
+            </div>
 
-        <label>
-            Sluttidspunkt <span style="color: red;">*</span><br>
-            <input type="time" id="end" required>
-        </label>
+            <label>
+                Heraf timer på vagtværelse: <br><span style="color: grey; font-weight: normal;">
+                    Hvis timer på værelse tæller
+                    i din lokaleaftale, kan du undlade at udfylde. Hvis du er i gang med at indtaste en fremtidig vagt,
+                    anbefaler vi at angive din typiske "worst case" f.eks. 5 timer på vagtværelse.</span><br>
+                <input type="number" name="roomtime" id="roomtime" min="0" step="0.25" />
+            </label>
 
-        <label>
-            Heraf timer på vagtværelse: <br><span style="color: grey; font-weight: normal;">
-                Hvis timer på værelse tæller
-                i din lokaleaftale, kan du undlade at udfylde. Hvis du er i gang med at indtaste en fremtidig vagt,
-                anbefaler vi at angive din typiske "worst case" f.eks. 5 timer på vagtværelse.</span><br>
-            <input type="number" name="roomtime" id="roomtime" min="0" step="0.25" />
-        </label>
+            <div class="btn-group">
+                <button type="submit" class="primary-btn">
+                    Tilføj vagt</button>
+            </div>
+        </form>
 
-        <button type="submit">Tilføj vagt</button>
-    </form>
+        <!-- Shift table -->
 
-    <div id="printable-table">
-        <h2>Mine vagter</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Nr</th>
-                    <th>Dato</th>
-                    <th>Start</th>
-                    <th>Slut</th>
-                    <th>Timer på værelse</th>
-                    <th>Tillægsgivende timer i alt</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody id="shift-list"></tbody>
-        </table>
-        <p>Samlet antal timer i år: <strong id="total-hours">0</strong> / 300</p>
+        <div class="printable-table">
+
+            <div class="title-w-btns">
+
+                <!-- Title -->
+                <h1>Mine vagter</h1>
+                <!-- Buttons -->
+
+                <div class="btn-group rm-from-print">
+                    <button class="secondary-btn" onclick="clearStorage()">Ryd al data</button><br>
+                    <button class="primary-btn" onclick="printPage()">🖨️ Print mine vagter ud</button>
+                </div>
+            </div>
+
+            <label>
+                <input type="checkbox" name="include-hours" value="yes">
+                Timer på vagtværelse tæller med (dette vil fremgå af din lokalaftale)
+            </label>
+            <h2>Samlet antal timer i år: <strong id="total-hours">0</strong> / 300</h2>
+            <div class="table-wrapper">
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nr</th>
+                            <th>Dato</th>
+                            <th>Start</th>
+                            <th>Slut</th>
+                            <th>Timer på værelse</th>
+                            <th>Tillægsgivende timer i alt</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="shift-list"></tbody>
+                </table>
+            </div>
+        </div>
+
+
     </div>
-
-    <button onclick="clearStorage()">Ryd al data</button><br>
-    <button onclick="printPage()">🖨️ Print mine vagter ud</button>
-
     <script src="script.js"></script>
 </body>
 

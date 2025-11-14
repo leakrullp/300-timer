@@ -1,7 +1,9 @@
 const form = document.getElementById("shift-form");
 const list = document.getElementById("shift-list");
 const totalEl = document.getElementById("total-hours");
-const includeRoomCheckbox = form.querySelector('input[name="visible"]');
+const includeRoomCheckbox = document.querySelector(
+  'input[name="include-hours"]'
+);
 
 // ---- load & persist policy (checkbox) ----
 const POLICY_KEY = "includeRoomtimePolicy";
@@ -43,18 +45,19 @@ function renderShifts() {
     const baseHours = calculateHours(s.start, s.end);
     const room = Number(s.roomtime) || 0;
     const totalHours = includeRoomtime ? baseHours : baseHours - room;
+    const formattedDate = new Date(s.date).toLocaleDateString();
 
     total += totalHours;
 
     const row = document.createElement("tr");
     row.innerHTML = `
       <td>${index + 1}</td>
-      <td>${s.date}</td>
+      <td>${formattedDate}</td>
       <td>${s.start}</td>
       <td>${s.end}</td>
       <td>${room.toFixed(2)}</td>
       <td>${totalHours.toFixed(2)}</td>
-      <td><button type="button" onclick="deleteShift(${index})">Fjern vagt</button></td>
+      <td><button class="rm-from-print rm-btn secondary-btn" type="button" onclick="deleteShift(${index})">Fjern</button></td>
     `;
     list.appendChild(row);
   });
@@ -63,8 +66,15 @@ function renderShifts() {
 }
 
 function clearStorage() {
-  localStorage.clear();
-  location.reload();
+  const confirmed = confirm(
+    "Er du sikker på, at du vil rydde al data?\nDette kan ikke gøres om."
+  );
+
+  // Only clear storage if they clicked OK
+  if (confirmed) {
+    localStorage.clear();
+    location.reload();
+  }
 }
 
 function printPage() {
