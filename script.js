@@ -105,3 +105,25 @@ form.addEventListener("submit", (e) => {
 });
 
 renderShifts();
+
+const burger = document.getElementById("burger");
+const navLinks = document.getElementById("nav-links");
+const burgerIcon = document.getElementById("burger-icon");
+
+burger.addEventListener("click", () => {
+  navLinks.classList.toggle("show");
+  burgerIcon.textContent = navLinks.classList.contains("show")
+    ? "close"
+    : "menu";
+});
+
+// Select all links inside the burger menu
+const navItems = navLinks.querySelectorAll("a");
+
+// Close menu when a link is clicked
+navItems.forEach((link) => {
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("show");
+    burgerIcon.textContent = "menu"; // reset icon
+  });
+});

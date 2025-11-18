@@ -11,18 +11,16 @@
 }
 
 body {
-  font-family: "Barlow", system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: var(--font-family);
   background-color: rgb(250, 250, 250);
   color: var(--primary-text);
-  padding: 1rem;
-  min-height: 100vh;
-  display: flex;
-  /* flex-direction: column; */
-  justify-content: flex-start;
   margin: 0;
   padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column; /* safer for mobile */
+  justify-content: flex-start;
+  overflow-x: hidden; /* prevent horizontal scrolling */
 }
 
 .navbar-container {
@@ -74,30 +72,35 @@ body {
 
 main {
   --margins: 30px;
-  --sidebar-width: 600px;
+  --sidebar-width: 480px;
   display: flex;
-  align-items: start;
+  align-items: flex-start;
   min-height: calc(100vh - 674px);
   margin-bottom: 2rem;
+  flex-wrap: wrap; /* allow wrapping on small screens */
 }
 
 .content {
   max-width: 1600px;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  margin-left: auto;
-  margin-right: auto;
+  width: 100%;
+  padding: 0 1rem; /* ensures padding on mobile */
+  margin: 1rem auto 0;
   gap: 1rem;
-  margin-top: 1rem;
   display: flex;
+  flex-wrap: wrap; /* children wrap on small screens */
 }
 
 /* SIDEBAR + MAIN SECTION (Desktop layout) */
 aside {
   width: 480px;
-  flex: 0 0 480px; /* fixed width, no shrink, no grow */
+  flex: 0 0 480px;
   position: sticky;
   top: var(--margins);
+  padding: 2rem;
+  background-color: white;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07);
+  border-radius: 8px;
+  min-width: 0; /* prevent overflow */
 }
 
 section {
@@ -155,6 +158,7 @@ section {
   display: none;
   cursor: pointer;
   font-size: 32px;
+  user-select: none;
 }
 
 /* ------------------------------------------------------
@@ -261,12 +265,39 @@ button {
 
 table {
   width: 100%;
-  min-width: 600px;
-  max-width: 100%;
   border-collapse: collapse;
   table-layout: fixed;
   word-wrap: break-word;
+  min-width: 400px; /* allow shrinking on mobile */
 }
+
+table th:first-child,
+table td:first-child {
+  width: 100px;
+  max-width: 40px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* table th:nth-child(2),
+table td:nth-child(2) {
+  width: 100px; 
+  max-width: 140px; 
+  overflow: hidden;
+  text-overflow: ellipsis; 
+  white-space: nowrap; 
+}
+
+table th:nth-child(3),
+table th:nth-child(4),
+table td:nth-child(3),
+table td:nth-child(4) {
+  width: 100px; 
+  max-width: 72px; 
+  overflow: hidden;
+  text-overflow: ellipsis; 
+  white-space: nowrap; 
+} */
 
 th,
 td {
@@ -317,11 +348,37 @@ td {
 
 @media (max-width: 720px) {
   .navbar-links {
-    display: none; /* hide links */
+    display: none;
+    position: absolute;
+    top: 74px;
+    width: 100%;
+    flex-direction: column;
+    gap: 2rem;
+    background: white;
+    padding: 1rem;
+    /* border-radius: 8px; */
+    /* box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); */
+    border-bottom: 2px solid #ccc;
+    z-index: 100;
+    transition: max-height 0.3s ease;
+    max-height: 0;
+    overflow: hidden;
+  }
+
+  .navbar-links.show {
+    display: flex;
+    max-height: 500px;
+    right: 0rem;
   }
 
   .navbar-burger {
-    display: block; /* show burger icon */
+    display: block;
+  }
+
+  .navbar-links a,
+  .navbar-links button {
+    width: 100%;
+    text-align: center;
   }
 
   button {
@@ -332,6 +389,11 @@ td {
   .title-w-btns {
     flex-direction: column;
     align-items: flex-start; /* align left when stacked */
+  }
+
+  .btn-group {
+    flex-direction: column;
+    width: 100%; /* buttons fill container on mobile */
   }
 }
 
