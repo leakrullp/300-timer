@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tillægsberegner – 300 timer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styleguide.css">
+    <link rel="stylesheet" href="pages.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo">
+                <a href="index.html">
+                    <img src="./assets/300timer-alt.svg" alt="Danske Anæstesisygeplejerskers logo" />
+                </a>
+            </div>
+
+
+            <nav class="navbar-links" id="nav-links">
+                <a href="howto.html" style="text-decoration: underline;">Sådan gør du</a>
+                <a href="about.html">Hvem vi er</a>
+                <a href="https://selvbetjening.winkas.net/tilmelding.asp?wkid=215280015&navid=3">
+                    <button class="secondary-btn">Bliv medlem</button>
+                </a>
+            </nav>
+
+            <div class="navbar-burger" id="burger">
+                <span class="material-symbols-outlined" id="burger-icon">menu</span>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+
+        <main class="text-block">
+            <h1>Sådan bruger du tillægsberegneren</h1>
+            <p>Tillægsberegneren hjælper dig med hurtigt at få overblik over, hvor mange timer dine vagter tæller med i
+                300-timers-ordningen. Du kan indtaste alle dine vagter, gemme dem lokalt på din enhed og løbende se,
+                hvor meget du samlet står på.
+                Nedenfor finder du en trin-for-trin guide til, hvordan du bruger værktøjet.
+            </p>
+            <h2>1) Indtast en vagt</h2>
+            <p>
+                For hver vagt skal du indtaste:
+            </p>
+            <p>
+                Dato
+                <br>
+                Starttidspunkt
+                <br>
+                Sluttidspunkt
+                <br>
+                Antal værelsestimer (hvis relevant)
+            </p>
+            <p>
+                Når du trykker "Tilføj vagt", bliver vagten lagt ind i oversigten.
+                Beregneren håndterer automatisk vagter, der går over midnat.
+            </p>
+            <p>En korrekt udfyldt vagt kan se således ud:</p>
+            <img src="assets/Skærmbillede 2025-11-20 kl. 19.01.38.png" alt="udfyldt vagtformular"
+                style="max-width: 520px;">
+            <h2>2) Vælg om værelsestimer tæller med</h2>
+            <p>
+                Øverst i formularen finder du en indstilling, hvor du kan vælge:
+            </p>
+            <p>
+                <strong>
+                    ☑ Timer på vagtværelse er tillægsgivende
+                </strong>
+            </p>
+            <p>
+                Dette vil komme an på den lokalaftale, der gælder på din arbejdsplads. Det kan også være forskelligt,
+                hvordan arbejdspladsen beregner de timer, hvor du var på vagtværelse.
+                Beregneren husker dit valg, så næste gang du åbner siden, behøver du ikke vælge igen.
+                Når du ændrer indstillingen, opdateres alle vagterne automatisk.
+            </p>
+            <h2>3) Gem dine vagter</h2>
+            <p>Når du indtaster vagter, bliver de automatisk gemt i din browsers lokale hukommelse. Det betyder, at du
+                ikke mister din data, hvis du lukker siden. Alt dataen ligger kun på din enhed i din browser. Du kan til
+                enhver tid fjerne enkelte vagter eller rydde alt. </p>
+            <p>
+                Du kan slette en vagt ved at trykke på "Fjern"-knappen ud for den.
+                Hvis du vil starte helt forfra, kan du bruge funktionen “Ryd al data” øverst på siden. Du bliver altid
+                bedt om at bekræfte, før noget slettes.</p>
+            <br>
+
+            <div class="qa">
+                <h1>Hyppige spørgsmål</h1>
+
+                <button type="button" class="collapsible">Kan jeg flytte vagterne fra min mobil til min
+                    computer?</button>
+                <div class="collapsible-content">
+                    <p>
+                        Nej, desværre. Dataen gemmes lokalt på enheden. Du kan dog trykke "Print mine vagter ud" og
+                        generer et dokument, som du kan printe eller sende til dig selv.
+                    </p>
+                </div>
+                <button type="button" class="collapsible">Hvem kan læse det jeg indtaster?</button>
+                <div class="collapsible-content">
+                    <p>
+                        Dataen gemmes lokalt på din enhed i den browser, hvor du indtaster det. Det kan f.eks. være
+                        Google Chrome eller Safari. Det er kun dig og andre der evt. benytter samme computer, som kan se
+                        hvad du gemmer.
+                    </p>
+                    <p>
+                        Vi anbefaler derfor at du skriver vagter ind på en
+                        computer/enhed, som du selv har råderet over og ikke en fælles arbejdscomputer eksempelvis.
+                    </p>
+                </div>
+            </div>
+        </main>
+
+    </div>
+
+    <footer>
+        <p>Udviklet med 🧡 af <a href="https://anspl.dk/">Danske Anæstesisygeplejersker</a>
+        </p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>

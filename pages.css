@@ -1,0 +1,67 @@
+.container {
+  line-height: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* centers horizontally */
+  align-items: center; /* centers vertically */
+  min-height: 100vh; /* full viewport height */
+  padding: 1rem; /* optional padding */
+  text-align: center; /* center text */
+}
+
+.text-block {
+  display: flex; /* make it flex container */
+  flex-direction: column; /* stack children vertically */
+  align-items: center; /* center horizontally */
+  text-align: center; /* center text */
+  max-width: 720px;
+  width: 100%; /* optional: limits line length for readability */
+  margin-top: 96px;
+}
+
+/* Ensure h1 and p are block */
+.text-block h1,
+.text-block p,
+.text-block img {
+  display: block;
+  margin: 0.5rem 0; /* optional spacing */
+}
+
+.text-block img {
+  width: 100%; /* fill the grid cell */
+  height: auto; /* maintain aspect ratio */
+  display: block;
+}
+
+/* Style the button that is used to open and close the collapsible content */
+.collapsible {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: inherit;
+}
+
+.collapsible:hover {
+  background-color: #ccc;
+}
+
+.collapsible-content {
+  text-align: left;
+  padding: 0 18px;
+  background-color: transparent;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+
+.qa {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  gap: 0.5rem;
+}

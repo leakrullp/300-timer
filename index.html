@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Tillægsberegner – 300 timer</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="navbar.css">
     <link rel="stylesheet" href="styleguide.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,16 +17,16 @@
         <div class="navbar-container">
             <div class="navbar-logo">
                 <a href="index.html">
-                    <img src="./assets/ANSPL-logo.svg" alt="Danske Anæstesisygeplejerskers logo" />
+                    <img src="./assets/300timer-alt.svg" alt="Danske Anæstesisygeplejerskers logo" />
                 </a>
             </div>
 
 
             <nav class="navbar-links" id="nav-links">
-                <a href="#howto">Sådan gør du</a>
-                <a href="#aboutus">Hvem vi er</a>
+                <a href="howto.html">Sådan gør du</a>
+                <a href="about.html">Hvem vi er</a>
                 <a href="https://selvbetjening.winkas.net/tilmelding.asp?wkid=215280015&navid=3">
-                    <button class="secondary-btn">Meld dig ind</button>
+                    <button class="secondary-btn">Bliv medlem</button>
                 </a>
             </nav>
 
@@ -45,6 +44,8 @@
                 <form class="form-section" id="shift-form">
                     <div class="title-w-btns">
                         <h1>Indtast timer</h1>
+                        <a href="howto.html"><button class="rm-from-print rm-btn secondary-btn" type="button">Læs vores
+                                guide</button></a>
                     </div>
 
                     <label>
@@ -65,12 +66,7 @@
                     </div>
 
                     <label>
-                        Heraf timer på vagtværelse: <br><span style="color: grey; font-weight: normal;">
-                            Hvis timer på værelse tæller
-                            i din lokaleaftale, kan du undlade at udfylde. Hvis du er i gang med at indtaste en
-                            fremtidig
-                            vagt,
-                            anbefaler vi at angive din typiske "worst case" f.eks. 5 timer på vagtværelse.</span><br>
+                        Timer på vagtværelse:
                         <input type="number" name="roomtime" id="roomtime" min="0" step="0.25" />
                     </label>
 
@@ -96,9 +92,10 @@
 
                     <label>
                         <input type="checkbox" name="include-hours" value="yes">
-                        Timer på vagtværelse tæller med (dette vil fremgå af din lokalaftale)
+                        Timer på vagtværelse er tillægsgivende
                     </label>
-                    <h2>Samlet antal timer i år: <strong id="total-hours">0</strong> / 300</h2>
+                    <h2>Samlet antal timer i år: <span style="font-weight: 800;" id="total-hours">0</span>
+                        / 300</h2>
                     <div class="table-wrapper">
                         <table class="shift-table">
                             <thead>
@@ -108,7 +105,7 @@
                                     <th>Start</th>
                                     <th>Slut</th>
                                     <th>Timer på værelse</th>
-                                    <th>Tillægsgivende timer i alt</th>
+                                    <th>Tillægsgivende timer</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -120,6 +117,11 @@
         </main>
 
     </div>
+
+    <footer>
+        <p>Udviklet med 🧡 af <a href="https://anspl.dk/">Danske Anæstesisygeplejersker</a>
+        </p>
+    </footer>
     <script src="script.js"></script>
 </body>
 
