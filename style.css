@@ -44,11 +44,11 @@ main {
   max-width: 1600px;
   width: 100%;
   padding: 0 1rem; /* ensures padding on mobile */
-  margin: 1rem auto 0;
+  margin: 96px auto 0;
   gap: 1rem;
   display: flex;
   flex-wrap: wrap; /* children wrap on small screens */
-  min-height: calc(100vh - 80px);
+  min-height: 78vh;
 }
 
 /* SIDEBAR + MAIN SECTION (Desktop layout) */
@@ -60,15 +60,13 @@ aside {
   padding: 2rem;
   background-color: white;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07);
-  border-radius: 8px;
-  min-width: 0; /* prevent overflow */
 }
 
 section {
   flex: 1; /* take remaining space */
   min-width: 0;
   margin-bottom: 1rem;
-  margin-top: 80px;
+  margin-top: 0px;
 }
 
 aside,
@@ -180,8 +178,19 @@ label {
   margin-bottom: 0.5rem;
 }
 
+label input {
+  margin-top: 0.5rem;
+}
+
 form {
   width: 100%;
+}
+form p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+form .btn-group {
+  margin-top: 1.5rem;
 }
 
 .form-group {
@@ -209,6 +218,7 @@ input[list] {
 
 input[type="checkbox"] {
   cursor: pointer;
+  scale: 1.1;
 }
 
 button {
@@ -267,25 +277,6 @@ table td:first-child {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-/* table th:nth-child(2),
-table td:nth-child(2) {
-  width: 100px; 
-  max-width: 140px; 
-  overflow: hidden;
-  text-overflow: ellipsis; 
-  white-space: nowrap; 
-}
-
-table th:nth-child(3),
-table th:nth-child(4),
-table td:nth-child(3),
-table td:nth-child(4) {
-  width: 100px; 
-  max-width: 72px; 
-  overflow: hidden;
-  text-overflow: ellipsis; 
-  white-space: nowrap; 
-} */
 
 th,
 td {
@@ -309,10 +300,9 @@ td {
   margin-top: 0;
 }
 
-/* Buttons group */
 .btn-group {
   display: flex;
-  gap: 0.5rem; /* space between buttons */
+  gap: 0.5rem;
 }
 
 /* ------------------------------------------------------
@@ -332,7 +322,7 @@ td {
 
   .form-group {
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 0rem;
   }
 }
 

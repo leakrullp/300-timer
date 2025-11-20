@@ -64,10 +64,13 @@
                             <input type="time" id="end" required>
                         </label>
                     </div>
+                    <p>Der tages automatisk højde for, at sluttidspunktet ligger i det efterfølgende døgn.</p>
 
                     <label>
                         Timer på vagtværelse:
-                        <input type="number" name="roomtime" id="roomtime" min="0" step="0.25" />
+                        <input type="number" name="roomtime" id="roomtime" min="0" step="0.25"
+                            oninvalid="this.setCustomValidity('Skal skrives som et heltal eller et kommatal i kvarte.\nF.eks. skrives 2t og 45min som 2,75')"
+                            oninput="this.setCustomValidity('')" />
                     </label>
 
                     <div class="btn-group">
@@ -117,11 +120,6 @@
         </main>
 
     </div>
-
-    <footer>
-        <p>Udviklet med 🧡 af <a href="https://anspl.dk/">Danske Anæstesisygeplejersker</a>
-        </p>
-    </footer>
     <script src="script.js"></script>
 </body>
 

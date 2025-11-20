@@ -4,7 +4,7 @@
   flex-direction: column;
   justify-content: flex-start; /* centers horizontally */
   align-items: center; /* centers vertically */
-  min-height: 100vh; /* full viewport height */
+  min-height: 80vh; /* full viewport height */
   padding: 1rem; /* optional padding */
   text-align: center; /* center text */
 }
@@ -20,11 +20,16 @@
 }
 
 /* Ensure h1 and p are block */
-.text-block h1,
+
 .text-block p,
 .text-block img {
   display: block;
   margin: 0.5rem 0; /* optional spacing */
+}
+
+.text-block h1 {
+  display: block;
+  margin-bottom: 1rem;
 }
 
 .text-block img {

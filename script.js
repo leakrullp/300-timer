@@ -54,6 +54,8 @@ document.addEventListener("DOMContentLoaded", () => {
         ? includeRoomCheckbox.checked
         : true;
 
+      shifts.sort((a, b) => new Date(a.date) - new Date(b.date));
+
       shifts.forEach((s, index) => {
         const baseHours = calculateHours(s.start, s.end);
         const room = Number(s.roomtime) || 0;
@@ -68,14 +70,14 @@ document.addEventListener("DOMContentLoaded", () => {
           <td>${formattedDate}</td>
           <td>${s.start}</td>
           <td>${s.end}</td>
-          <td>${room.toFixed(2)}</td>
-          <td>${totalHours.toFixed(2)}</td>
+          <td>${formatHours(room)}</td>
+          <td>${formatHours(totalHours)}</td>
           <td><button class="rm-from-print rm-btn secondary-btn" type="button" onclick="deleteShift(${index})">Fjern</button></td>
         `;
         list.appendChild(row);
       });
 
-      totalEl.textContent = total.toFixed(2);
+      totalEl.textContent = formatHours(total);
     }
 
     window.deleteShift = function (index) {
@@ -137,6 +139,13 @@ document.addEventListener("DOMContentLoaded", () => {
 // ========================
 // GLOBAL FUNCTIONS (optional)
 // ========================
+function formatHours(num) {
+  return num.toLocaleString("da-DK", {
+    minimumFractionDigits: 0, // don’t show decimals if whole
+    maximumFractionDigits: 2, // show up to 2 decimals if needed
+  });
+}
+
 function clearStorage() {
   const confirmed = confirm(
     "Er du sikker på, at du vil rydde al data?\nDette kan ikke gøres om."
