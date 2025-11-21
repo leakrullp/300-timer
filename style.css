@@ -318,11 +318,6 @@ td {
     flex: none;
     position: static;
   }
-
-  .form-group {
-    flex-direction: column;
-    gap: 0rem;
-  }
 }
 
 /* ------------------------------------------------------
@@ -386,6 +381,11 @@ td {
   .btn-group {
     flex-direction: column;
     width: 100%; /* buttons fill container on mobile */
+  }
+
+  .form-group {
+    flex-direction: column;
+    gap: 0rem;
   }
 }
 
