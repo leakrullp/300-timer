@@ -335,6 +335,10 @@ tfoot td {
     padding: 1rem;
   }
 
+  .content {
+    padding: 0;
+  }
+
   .navbar-links {
     display: none;
     position: absolute;
@@ -343,8 +347,8 @@ tfoot td {
     flex-direction: column;
     gap: 2rem;
     background: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07);
     padding: 1rem;
-    border-bottom: 2px solid #ccc;
     z-index: 100;
     transition: max-height 0.3s ease;
     max-height: 0;
