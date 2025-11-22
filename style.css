@@ -284,6 +284,11 @@ td {
   border-bottom: 1px solid #ccc;
 }
 
+tfoot td {
+  padding: 0.5rem 0.5rem;
+  border-bottom: 3px double var(--primary-text);
+}
+
 .title-w-btns {
   min-height: 48px;
   display: flex;

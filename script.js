@@ -49,7 +49,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function renderShifts() {
       list.innerHTML = "";
-      let total = 0;
+
+      // Footer elements
+      const totalBaseEl = document.querySelector("tfoot td:nth-child(5)");
+      const totalRoomEl = document.querySelector("tfoot td:nth-child(6)");
+      const totalTotalEl = document.querySelector("tfoot td:nth-child(7)");
+
+      // Totals
+      let sumBase = 0;
+      let sumRoom = 0;
+      let sumTotal = 0;
+
       const includeRoomtime = includeRoomCheckbox
         ? includeRoomCheckbox.checked
         : true;
@@ -62,23 +72,36 @@ document.addEventListener("DOMContentLoaded", () => {
         const totalHours = includeRoomtime ? baseHours : baseHours - room;
         const formattedDate = new Date(s.date).toLocaleDateString();
 
-        total += totalHours;
+        // Add to totals
+        sumBase += baseHours;
+        sumRoom += room;
+        sumTotal += totalHours;
 
         const row = document.createElement("tr");
         row.innerHTML = `
-          <td>${index + 1}</td>
-          <td>${formattedDate}</td>
-          <td>${s.start}</td>
-          <td>${s.end}</td>
-          <td>${formatHours(baseHours)}</td>
-          <td>${formatHours(room)}</td>
-          <td>${formatHours(totalHours)}</td>
-          <td><button class="rm-from-print rm-btn secondary-btn" type="button" onclick="deleteShift(${index})">Fjern</button></td>
-        `;
+      <td>${index + 1}</td>
+      <td>${formattedDate}</td>
+      <td>${s.start}</td>
+      <td>${s.end}</td>
+      <td>${formatHours(baseHours)}</td>
+      <td>${formatHours(room)}</td>
+      <td>${formatHours(totalHours)}</td>
+      <td>
+        <button class="rm-from-print rm-btn secondary-btn"
+                type="button"
+                onclick="deleteShift(${index})">Fjern</button>
+      </td>
+    `;
         list.appendChild(row);
       });
 
-      totalEl.textContent = formatHours(total);
+      // Update footer values
+      totalBaseEl.innerHTML = `<strong>${formatHours(sumBase)}</strong>`;
+      totalRoomEl.innerHTML = `<strong>${formatHours(sumRoom)}</strong>`;
+      totalTotalEl.innerHTML = `<strong>${formatHours(sumTotal)}</strong>`;
+
+      //Update total on top of page
+      totalEl.textContent = `${formatHours(sumTotal)}`;
     }
 
     window.deleteShift = function (index) {
