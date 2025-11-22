@@ -270,8 +270,7 @@ table {
 
 table th:first-child,
 table td:first-child {
-  width: 100px;
-  max-width: 40px;
+  width: 34px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
