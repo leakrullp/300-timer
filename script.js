@@ -70,6 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <td>${formattedDate}</td>
           <td>${s.start}</td>
           <td>${s.end}</td>
+          <td>${formatHours(baseHours)}</td>
           <td>${formatHours(room)}</td>
           <td>${formatHours(totalHours)}</td>
           <td><button class="rm-from-print rm-btn secondary-btn" type="button" onclick="deleteShift(${index})">Fjern</button></td>
