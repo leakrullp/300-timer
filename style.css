@@ -190,6 +190,8 @@ form p {
   margin-bottom: 1rem;
 }
 form .btn-group {
+  display: flex;
+  justify-content: flex-end;
   margin-top: 1.5rem;
 }
 

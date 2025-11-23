@@ -77,14 +77,17 @@
 
                     <label>
                         Timer på vagtværelse:
-                        <input type="number" name="roomtime" id="roomtime" min="0" step="0.25" />
+                        <div class="form-group">
+                            <input type="number" id="myHours" placeholder="Timer" min="0" max="23">
+                            <input type="number" id="myMinutes" placeholder="Minutter" min="0" max="59">
+                        </div>
                     </label>
-                    <p>Timer skal skrives som et heltal eller et kommatal i kvarte. F.eks. skrives 2t og 45min som 2,75
-                    </p>
 
                     <div class="btn-group">
+                        <button type="reset" class="secondary-btn">
+                            Ryd formular</button>
                         <button type="submit" class="primary-btn">
-                            Tilføj vagt</button>
+                            Gem vagt</button>
                     </div>
                 </form>
             </aside>
@@ -98,7 +101,7 @@
                         <!-- Buttons -->
                         <div class="btn-group rm-from-print">
                             <button class="secondary-btn" onclick="clearStorage()">Ryd al data</button>
-                            <button class="primary-btn" onclick="printPage()">🖨️ Print mine vagter ud</button>
+                            <button class="primary-btn" onclick="printPage()">🖨️ Udskriv mine vagter</button>
                         </div>
                     </div>
 

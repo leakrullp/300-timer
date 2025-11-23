@@ -120,7 +120,10 @@ document.addEventListener("DOMContentLoaded", () => {
       const date = document.getElementById("date").value;
       const start = document.getElementById("start").value;
       const end = document.getElementById("end").value;
-      const roomtime = Number(document.getElementById("roomtime").value) || 0;
+
+      const myHours = Number(document.getElementById("myHours").value) || 0;
+      const myMinutes = Number(document.getElementById("myMinutes").value) || 0;
+      const roomtime = myHours + myMinutes / 60;
 
       shifts.push({ date, start, end, roomtime });
       saveShifts();
