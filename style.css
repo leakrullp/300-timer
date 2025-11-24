@@ -53,8 +53,8 @@ main {
 
 /* SIDEBAR + MAIN SECTION (Desktop layout) */
 aside {
-  width: 480px;
-  flex: 0 0 480px;
+  width: var(--sidebar-width);
+  flex: 0 0 var(--sidebar-width);
   position: sticky;
   top: 96px;
   padding: 2rem;

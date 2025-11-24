@@ -87,6 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const [eh, em] = endTime.split(":").map(Number);
       let diff = eh * 60 + em - (sh * 60 + sm);
       if (diff < 0) diff += 24 * 60; // overnight
+      if (diff === 0) return 24;
       return diff / 60;
     }
 
