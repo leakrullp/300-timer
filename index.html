@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-YQEBJBNJV2"></script>
     <script>
@@ -58,25 +59,25 @@
                     </div>
 
                     <label>
-                        Dato <span style="color: red;">*</span>
+                        Dato<span style="color: red;">*</span>
                         <input type="date" id="date" required>
                     </label>
 
                     <div class="form-group">
                         <label>
-                            Starttidspunkt <span style="color: red;">*</span>
+                            Starttidspunkt<span style="color: red;">*</span>
                             <input type="time" id="start" required>
                         </label>
 
                         <label>
-                            Sluttidspunkt <span style="color: red;">*</span>
+                            Sluttidspunkt<span style="color: red;">*</span>
                             <input type="time" id="end" required>
                         </label>
                     </div>
-                    <p>Der tages automatisk højde for, at sluttidspunktet ligger i det efterfølgende døgn.</p>
+                    <p>Der tages automatisk højde for sluttidspunkter der ligger i det efterfølgende døgn.</p>
 
                     <label>
-                        Timer på vagtværelse:
+                        Tid på vagtværelse i <a href="howto.html#timespan">tillægstidrummet:</a>
                         <div class="form-group">
                             <input type="number" id="myHours" placeholder="Timer" min="0" max="23">
                             <input type="number" id="myMinutes" placeholder="Minutter" min="0" max="59">
@@ -107,9 +108,9 @@
 
                     <label>
                         <input type="checkbox" name="include-hours" value="yes">
-                        Timer på vagtværelse er tillægsgivende
+                        Tid på vagtværelse er tillægsgivende
                     </label>
-                    <h2>Tillægsgivende timer i år: <span style="font-weight: 800;" id="total-hours">0</span>
+                    <h2>Tillægsgivende timer i perioden: <span style="font-weight: 800;" id="total-hours">0</span>
                         / 300</h2>
                     <div class="table-wrapper">
                         <table class="shift-table">
@@ -146,6 +147,7 @@
 
     </div>
     <script src="script.js"></script>
+    <script src="helligdage.js"></script>
 </body>
 
 </html>

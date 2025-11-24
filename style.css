@@ -162,8 +162,14 @@ h3 {
   font-size: 1.2rem;
   font-weight: 500;
 }
-a {
+footer a {
   text-decoration: none;
+  color: rgb(25, 41, 159);
+  font-weight: 500;
+}
+
+a {
+  text-decoration: underline;
   color: rgb(25, 41, 159);
   font-weight: 500;
 }

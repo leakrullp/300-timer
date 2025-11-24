@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Tillægsberegner – 300 timer</title>
+    <title>Tillægsberegner – Danske Anæstesisygeplejersker</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="styleguide.css">
     <link rel="stylesheet" href="pages.css">
@@ -40,9 +40,17 @@
 
         <main class="text-block">
             <h1>Sådan bruger du tillægsberegneren</h1>
-            <p>Tillægsberegneren hjælper dig med hurtigt at få overblik over, hvor mange timer dine vagter tæller med i
-                300-timers-ordningen. Du kan indtaste alle dine vagter, gemme dem lokalt på din enhed og løbende se,
-                hvor meget du samlet står på.
+            <p>Tillægsberegneren hjælper dig med løbende at holde et overblik over, om du optjener nok timer til at få
+                300-timers-tillægget.
+            <p>
+                Når du indtaster vagter, bliver de automatisk gemt i din browsers lokale
+                hukommelse. Det betyder, at du
+                ikke mister din data, hvis du lukker siden. Alt dataen ligger lokalt på din enhed i din browser. Du kan
+                til
+                enhver tid fjerne enkelte vagter eller rydde alt.
+            </p>
+            </p>
+            <p>
                 Nedenfor finder du en trin-for-trin guide til, hvordan du bruger værktøjet.
             </p>
             <h2>1) Indtast en vagt</h2>
@@ -55,41 +63,60 @@
                 <strong>Starttidspunkt</strong>
                 <br>
                 <strong>Sluttidspunkt</strong>
-                <br>
-                <strong>Antal værelsestimer</strong> (hvis relevant)
             </p>
-            <p>
-                Når du trykker "Tilføj vagt", bliver vagten gemt i oversigten.
+            <p id="timespan">
+                Når du trykker "Gem vagt", bliver vagten gemt i oversigten.
                 Beregneren håndterer automatisk vagter, der går over midnat. Vagterne gemmes i hukommelsen i browseren,
                 så de vil stadig være der når du lukker hjemmesiden og åbner den igen senere.
             </p>
-            <p>Vores mindste tidsenhed er et kvarter. Så hvis I på dinarbejdsplads skriver "2t og 35min" når I er på
-                væresle, så anbefaler vi at runde op til 2,75 – altså 2t og 45m. Så er du på den sikre side.</p>
-            <p>En korrekt udfyldt vagt kan se således ud:</p>
-            <img src="assets/Skærmbillede 2025-11-20 kl. 19.01.38.png" alt="udfyldt vagtformular"
-                style="max-width: 520px;">
-            <h2>2) Vælg om værelsestimer tæller med</h2>
+            <p>Kalenderen tager automatisk højde for weekeender og helligdage.</p>
+
+            <h2>2) Tast ind hvor længe du eventuelt var på vagtværelse i det tillægsgivende tidsrum</h2>
             <p>
-                Øverst i formularen finder du en indstilling, hvor du kan vælge:
+                Efter tidspunkterne kan du taste ind hvor længe, du var på vagtværelse i løbet
+                af din vagt. Du skal dog kun indtaste timer, som falder i disse tidsrum:
+            </p>
+
+            <p>
+                Aften/nat: <strong>mandag til fredag kl. 18-06</strong>
+                <br>
+                Weekend: <strong>fredag kl. 18-mandag kl. 06</strong>
+                <br>
+                Søgnehelligdage: <strong>hele døgnet</strong>
+            </p>
+
+            <p>
+                Det er kun disse tidspunkter, der er tillægsgivende og tæller med i de 300 timer.
+            </p>
+            <p>
+                Et par eksempler kan se således ud:
+            </p>
+            <i>
+                Du møder ind en <b>mandag</b> fra 15:00 til 8:00 næste morgen. Du går på vagtværelse fra
+                kl. 1:30 og der er ro helt indtil du har fri. Her skal du taste <b>4 timer og 30 minutter</b> fordi,
+                det kun er timerne mellem 1:30 og 6:00, som tæller imod de tillægsgivende timer.
+            </i>
+            </p>
+
+            <p>En korrekt udfyldt vagt kan se således ud:</p>
+            <img src="assets/screenshot.png" alt="udfyldt vagtformular" style="max-width: 520px;">
+
+            <h2>3) Vælg om værelsestimerne tæller med</h2>
+            <p>
+                Øverst i tabellen under "Mine vagter" finder du en indstilling, hvor du kan vælge:
             </p>
             <p>
                 <strong>
-                    ☑ Timer på vagtværelse er tillægsgivende
+                    ☑ Tid på vagtværelse er tillægsgivende
                 </strong>
             </p>
             <p>
                 Dette vil komme an på den lokalaftale, der gælder på din arbejdsplads.
                 Checkboxen husker dit valg, så næste gang du åbner siden, behøver du ikke vælge igen.
-                Når du ændrer indstillingen, opdateres alle vagterne automatisk.
+                Når du ændrer indstillingen, opdateres alle vagterne automatisk, således at du nemt kan sammenligne,
+                hvordan du er stillet i begge scenarier.
             </p>
-            <h2>3) Gem dine vagter</h2>
-            <p>Når du indtaster vagter, bliver de automatisk gemt i din browsers lokale hukommelse. Det betyder, at du
-                ikke mister din data, hvis du lukker siden. Alt dataen ligger kun på din enhed i din browser. Du kan til
-                enhver tid fjerne enkelte vagter eller rydde alt. </p>
-            <p>
-                Du kan slette en vagt ved at trykke på "Fjern"-knappen ud for den.
-                Hvis du vil starte helt forfra, kan du bruge funktionen “Ryd al data” øverst på siden. Du bliver altid
-                bedt om at bekræfte, før noget slettes.</p>
+
             <br>
 
             <div class="qa">
@@ -123,6 +150,41 @@
                     <p>
                         Nej desværre. Men det er nemt at slette en vagt og tilføje en ny. Vagterne bliver automatisk
                         sorteret efter dato, uanset hvornår du har indtastet dem.
+                    </p>
+                </div>
+
+                <button type="button" class="collapsible">Hvorfor kommer I frem til et andet tal, end der står på min
+                    lønseddel?</button>
+                <div class="collapsible-content">
+                    <p>
+                        På din lønseddel er der kun angivet de timer, som du rent faktisk har afviklet på den dato, hvor
+                        din lønseddel løber til. På 300timer.dk
+                        kan du indtaste kommende vagter, så det er muligt, at du er "foran" din HR-afdeling.
+                    </p>
+                    <p>
+                        Hvis du alligevel kun har indtastet præcis de vagter, som der fremgår af din lønseddel og tallet
+                        stadig er mindre, så skal du gå til din nærmeste leder eller TR. Der kan være risiko for, at din
+                        arbejdsgiver har overset timer, som er tillægsgivende ifølge aftalen.
+                    </p>
+                </div>
+
+                <button type="button" class="collapsible">Hvad gør jeg med vagter, hvor jeg var syg, på barsel
+                    mm.?</button>
+                <div class="collapsible-content">
+                    <p>
+                        I den kommenterede aftale om vagttillægget, som Danske Regioner har udgivet, fremgår det at:
+
+                    <p>
+                        <i>Under sygefravær optjenes vagttimer efter den normale vagtplan eller den bagvedliggende
+                            skyggeplan. [...]</i>
+                        <i>Formålet er, at den ansatte efter sygdom skal stilles, som om den ansatte ikke har været
+                            fraværende.</i>
+                    </p>
+
+                    <p>Samme ordlyd står der vedrørende barselsorlov. Du skal derfor gå til din nærmeste leder eller TR,
+                        hvis du
+                        mener,
+                        at dette ikke er blevet tilgodeset.</p>
                     </p>
                 </div>
 

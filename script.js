@@ -1,7 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // ========================
-  // SHIFT FORM & TABLE LOGIC
-  // ========================
   const form = document.getElementById("shift-form");
   const list = document.getElementById("shift-list");
   const totalEl = document.getElementById("total-hours");
@@ -39,9 +36,55 @@ document.addEventListener("DOMContentLoaded", () => {
       localStorage.setItem("shifts", JSON.stringify(shifts));
     }
 
-    function calculateHours(start, end) {
-      const [sh, sm] = start.split(":").map(Number);
-      const [eh, em] = end.split(":").map(Number);
+    function calculateBaseHoursFromShift(startDate, startTime, endTime) {
+      const [startH, startM] = startTime.split(":").map(Number);
+      const [endH, endM] = endTime.split(":").map(Number);
+
+      const startDateTime = new Date(startDate);
+      startDateTime.setHours(startH, startM, 0, 0);
+
+      const endDateTime = new Date(startDate);
+      endDateTime.setHours(endH, endM, 0, 0);
+
+      if (startTime >= endTime) {
+        endDateTime.setDate(endDateTime.getDate() + 1);
+      }
+
+      const ONE_MIN = 60 * 1000;
+
+      let weekday_00_06 = 0;
+      let weekday_18_24 = 0;
+      let weekend = 0;
+
+      let t = startDateTime;
+
+      while (t < endDateTime) {
+        const next = new Date(Math.min(+t + ONE_MIN, +endDateTime));
+
+        const day = t.getDay();
+        const hour = t.getHours() + t.getMinutes() / 60;
+
+        const isWeekendOrHoliday = day === 0 || day === 6 || isHoliday(t); // Sunday=0, Saturday=6
+        const dur = (next - t) / (1000 * 60 * 60); // preliminary duration
+
+        if (isWeekendOrHoliday) {
+          weekend += dur;
+        } else {
+          if (hour < 6) {
+            weekday_00_06 += dur;
+          } else if (hour >= 18) {
+            weekday_18_24 += dur;
+          }
+        }
+
+        t = next;
+      }
+      return weekday_00_06 + weekday_18_24 + weekend;
+    }
+
+    function calculateTotalShiftHours(startTime, endTime) {
+      const [sh, sm] = startTime.split(":").map(Number);
+      const [eh, em] = endTime.split(":").map(Number);
       let diff = eh * 60 + em - (sh * 60 + sm);
       if (diff < 0) diff += 24 * 60; // overnight
       return diff / 60;
@@ -56,34 +99,41 @@ document.addEventListener("DOMContentLoaded", () => {
       const totalTotalEl = document.querySelector("tfoot td:nth-child(7)");
 
       // Totals
-      let sumBase = 0;
-      let sumRoom = 0;
-      let sumTotal = 0;
+      let sumShiftLength = 0,
+        sumRoom = 0,
+        sumTotal = 0;
 
       const includeRoomtime = includeRoomCheckbox
         ? includeRoomCheckbox.checked
         : true;
 
+      // Sort shifts by date
       shifts.sort((a, b) => new Date(a.date) - new Date(b.date));
 
+      // Loop through shifts
       shifts.forEach((s, index) => {
-        const baseHours = calculateHours(s.start, s.end);
         const room = Number(s.roomtime) || 0;
-        const totalHours = includeRoomtime ? baseHours : baseHours - room;
-        const formattedDate = new Date(s.date).toLocaleDateString();
 
-        // Add to totals
-        sumBase += baseHours;
+        // Calculate total shift length
+        const shiftLength = calculateTotalShiftHours(s.start, s.end);
+        // Calculate base hours
+        const baseHours = calculateBaseHoursFromShift(s.date, s.start, s.end);
+        // Calculate hours that count towards 300 hours
+        const totalHours = includeRoomtime ? baseHours : baseHours - room;
+
+        // Accumulate totals
+        sumShiftLength += shiftLength;
         sumRoom += room;
         sumTotal += totalHours;
 
+        // Create row
         const row = document.createElement("tr");
         row.innerHTML = `
       <td>${index + 1}</td>
-      <td>${formattedDate}</td>
+      <td>${formatShiftDate(s.date)}</td>
       <td>${s.start}</td>
       <td>${s.end}</td>
-      <td>${formatHours(baseHours)}</td>
+      <td>${formatHours(shiftLength)}</td>
       <td>${formatHours(room)}</td>
       <td>${formatHours(totalHours)}</td>
       <td>
@@ -95,13 +145,26 @@ document.addEventListener("DOMContentLoaded", () => {
         list.appendChild(row);
       });
 
-      // Update footer values
-      totalBaseEl.innerHTML = `<strong>${formatHours(sumBase)}</strong>`;
+      // Update footer totals
+      totalBaseEl.innerHTML = `<strong>${formatHours(sumShiftLength)}</strong>`;
       totalRoomEl.innerHTML = `<strong>${formatHours(sumRoom)}</strong>`;
       totalTotalEl.innerHTML = `<strong>${formatHours(sumTotal)}</strong>`;
 
-      //Update total on top of page
-      totalEl.textContent = `${formatHours(sumTotal)}`;
+      // Update top total display
+      totalEl.textContent = formatHours(sumTotal);
+    }
+
+    // Helper to format the date
+    function formatShiftDate(dateString) {
+      const date = new Date(dateString);
+      let formatted = date.toLocaleDateString("da-DA", {
+        weekday: "short",
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+      });
+      formatted = formatted.replace(".", ""); // remove dot from weekday
+      return formatted;
     }
 
     window.deleteShift = function (index) {
