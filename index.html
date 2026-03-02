@@ -63,7 +63,7 @@
                     </div>
 
                     <label>
-                        Dato<span style="color: red;">*</span>
+                        Dato du møder ind<span style="color: red;">*</span>
                         <input type="date" id="date" required>
                     </label>
 
@@ -80,12 +80,45 @@
                     </div>
                     <p>Der tages automatisk højde for sluttidspunkter der ligger i det efterfølgende døgn.</p>
 
-                    <label>
+                    <!-- <label>
                         Tid på vagtværelse i <a href="howto.html#timespan">tillægstidrummet:</a>
                         <div class="form-group">
                             <input type="number" id="myHours" placeholder="Timer" min="0" max="23">
                             <input type="number" id="myMinutes" placeholder="Minutter" min="0" max="59">
                         </div>
+                    </label> -->
+
+                    <label>
+                        <b>Tid på vagtværelse</b> (skal være tom hvis du er aktiv hele vagten)<br><br>
+
+                        <div class="form-group">
+                            <label>
+                                Blev kaldt kl.:
+                                <input type="time" name="callTime[]">
+                            </label>
+                            <label>
+                                Retur kl.:
+                                <input type="time" name="returnTime[]">
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label>
+                                Blev kaldt kl.:
+                                <input type="time" name="callTime[]">
+                            </label>
+                            <label>
+                                Retur kl.:
+                                <input type="time" name="returnTime[]">
+                            </label>
+                        </div>
+
+                        <div id="additional-breaks"></div>
+
+
+                        <button class="rm-from-print rm-btn secondary-btn" type="button"
+                            onclick="addBreakInput()">Tilføj linje</button>
+
                     </label>
 
                     <div class="btn-group">
