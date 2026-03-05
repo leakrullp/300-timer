@@ -220,7 +220,9 @@ input[list] {
   border: 1px solid #ccc;
   border-radius: 8px;
   font-size: 1rem;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
   font-family: var(--font-family);
 }
 
@@ -256,6 +258,53 @@ button {
 
 .rm-btn {
   padding: 6px 8px;
+}
+
+.remove-row-btn {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0; /* Prevents the button from being squished */
+  align-self: flex-end; /* Aligns the button with the bottom of the inputs */
+  margin-bottom: 4px; /* Optional: adjust to match the exact baseline of your inputs */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.info-tooltip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  margin-left: 4px;
+  cursor: pointer;
+}
+
+.tooltip-text {
+  visibility: hidden;
+  width: 260px;
+  background-color: var(--primary-text);
+  color: white;
+  text-align: center;
+  padding: 6px 8px;
+  border-radius: 6px;
+
+  position: absolute;
+  z-index: 1000;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.info-tooltip:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
 }
 
 /* ------------------------------------------------------
