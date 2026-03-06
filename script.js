@@ -42,9 +42,6 @@ document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("additional-breaks");
 
     if (addBreakBtn) {
-      // Remove the inline attribute so it doesn't try to call a global function
-      addBreakBtn.removeAttribute("onclick");
-
       addBreakBtn.addEventListener("click", () => {
         const MAX_BREAKS = 7;
 
@@ -74,13 +71,6 @@ document.addEventListener("DOMContentLoaded", () => {
             `;
 
         additionalBreaksContainer.appendChild(newGroup);
-
-        // 2. Add functionality to the "Remove" button for this specific row
-        newGroup
-          .querySelector(".remove-row-btn")
-          .addEventListener("click", () => {
-            newGroup.remove();
-          });
       });
     }
 
