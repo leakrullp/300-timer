@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (addBreakBtn) {
       addBreakBtn.addEventListener("click", () => {
-        const MAX_BREAKS = 7;
+        const MAX_BREAKS = 9;
 
         // Count existing breaks
         const currentBreaks =
