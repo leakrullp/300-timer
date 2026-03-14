@@ -61,11 +61,17 @@ document.addEventListener("DOMContentLoaded", () => {
         // Note the use of "remove-row-btn" to handle deletion later
         newGroup.innerHTML = `
                 <label>
-                    Gik på værelse kl.:
+                    Retur på værelse kl.
                     <input type="time" name="startOfBreak[]">
                 </label>
                 <label>
-                    Blev kaldt kl.:
+                    Blev kaldt igen kl.
+                    <span class="info-tooltip">
+                            ⓘ
+                            <span class="tooltip-text">
+                                Dette felt skal være tomt, hvis du ikke blev kaldt igen efter du gik på værelse.
+                            </span>
+                        </span>
                     <input type="time" name="endOfBreak[]">
                 </label>
             `;
@@ -195,7 +201,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const totalTotalEl = document.querySelector("tfoot td:nth-child(7)");
 
       let sumShiftLength = 0,
-        sumRoom = 0,
+        sumActive = 0,
         sumTotal = 0;
 
       const includeRoomtime = includeRoomCheckbox
@@ -224,9 +230,11 @@ document.addEventListener("DOMContentLoaded", () => {
           finalEligibleHours = calculateEligibleHours(s);
         }
 
+        const activeHours = shiftLength - room;
+
         // Accumulate totals
         sumShiftLength += shiftLength;
-        sumRoom += room;
+        sumActive += activeHours;
         sumTotal += finalEligibleHours;
 
         // Create row
@@ -237,7 +245,7 @@ document.addEventListener("DOMContentLoaded", () => {
       <td>${s.start}</td>
       <td>${s.end}</td>
       <td>${formatHours(shiftLength)}</td>
-      <td>${formatHours(room)}</td>
+      <td>${formatHours(activeHours)}</td>
       <td>${formatHours(finalEligibleHours)}</td>
       <td>
         <button class="rm-from-print rm-btn secondary-btn"
@@ -252,7 +260,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (totalBaseEl)
         totalBaseEl.innerHTML = `<strong>${formatHours(sumShiftLength)}</strong>`;
       if (totalRoomEl)
-        totalRoomEl.innerHTML = `<strong>${formatHours(sumRoom)}</strong>`;
+        totalRoomEl.innerHTML = `<strong>${formatHours(sumActive)}</strong>`;
       if (totalTotalEl)
         totalTotalEl.innerHTML = `<strong>${formatHours(sumTotal)}</strong>`;
 

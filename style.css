@@ -160,7 +160,7 @@ h3 {
   color: inherit;
   margin-bottom: 1rem;
   font-size: 1.2rem;
-  font-weight: 500;
+  font-weight: 600;
 }
 footer a {
   text-decoration: none;
@@ -289,6 +289,8 @@ button {
   background-color: var(--primary-text);
   color: white;
   text-align: center;
+  font-size: 1rem;
+  font-weight: 500;
   padding: 6px 8px;
   border-radius: 6px;
 

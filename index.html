@@ -95,39 +95,33 @@
                         </label>
                     </div>
 
-                    <!-- <label>
-                        Tid på vagtværelse i <a href="howto.html#timespan">tillægstidrummet:</a>
-                        <div class="form-group">
-                            <input type="number" id="myHours" placeholder="Timer" min="0" max="23">
-                            <input type="number" id="myMinutes" placeholder="Minutter" min="0" max="59">
-                        </div>
-                    </label> -->
-
-                    <label><br>
-                        <b>Tid på vagtværelse/i rådighed</b>
-
-                        <span class="info-tooltip">
-                            ⓘ
-                            <span class="tooltip-text">
-                                Disse vil blive tolket som ikke-aktive rådighedstimer.
-                            </span>
-                        </span>
-                        <br><br>
+                    <label>
+                        <h3>Tid på vagtværelse/i rådighed <span class="info-tooltip">
+                                ⓘ
+                                <span class="tooltip-text">
+                                    Disse vil blive tolket som ikke-aktive rådighedstimer.
+                                </span>
+                            </span></h3>
 
                         <div class="form-group">
                             <label>
-                                Gik på rådighed kl.
+                                Første aftrædelse
+                                <span class="info-tooltip">
+                                    ⓘ
+                                    <span class="tooltip-text">
+                                        Vi behøver ikke vide, hvornår du har en fast aftale om fratrædelse.
+                                        Du skal blot angive det tidligste tidspunkt, hvor du reelt er trådt fra. Det kan
+                                        både være når I har aftalt det eller senere, hvis der var travlt.
+                                    </span>
+                                </span>
                                 <input type="time" name="startOfBreak[]">
                             </label>
                             <label>
-                                Blev kaldt kl. <span class="info-tooltip">
+                                Blev kaldt kl.
+                                <span class="info-tooltip">
                                     ⓘ
                                     <span class="tooltip-text">
-                                        Hvis dette feldt er tomt mens starttid er udfyldt, vil det tolkes som
-                                        om, du var på rådighed resten af vagten.<br>Du kan tilføje mange
-                                        rådighedstidsrum, men det er kun den sidste, hvor du kan undlade at angive
-                                        sluttid.<br> Hvis alle sluttider er udfyldte, ses det som om du var aktiv indtil
-                                        vagten sluttede.
+                                        Dette felt skal være tomt, hvis du ikke blev kaldt efter aftrædelse.
                                     </span>
                                 </span>
                                 <input type="time" name="endOfBreak[]">
@@ -175,9 +169,9 @@
                                     <th>Dato</th>
                                     <th>Start</th>
                                     <th>Slut</th>
-                                    <th>Timer på vagt</th>
-                                    <th>Rådigheds<wbr>timer i alt</th>
-                                    <th>Tillægs<wbr>givende timer</th>
+                                    <th>Vagtens længe</th>
+                                    <th>Aktive timer i løbet af vagt</th>
+                                    <th>Heraf tillægs<wbr>givende timer</th>
                                     <th></th>
                                 </tr>
                             </thead>
