@@ -372,12 +372,12 @@ function timeToMinutes(t) {
   return h * 60 + m;
 }
 
-function clearStorage() {
+function clearShiftStorage() {
   const confirmed = confirm(
     "Er du sikker på, at du vil rydde al data?\nDette kan ikke gøres om.",
   );
   if (confirmed) {
-    localStorage.clear();
+    localStorage.removeItem("shifts");
     location.reload();
   }
 }
