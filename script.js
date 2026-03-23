@@ -137,52 +137,6 @@ document.addEventListener("DOMContentLoaded", () => {
       return result;
     }
 
-    function calculateBaseHoursFromShift(startDate, startTime, endTime) {
-      const [startH, startM] = startTime.split(":").map(Number);
-      const [endH, endM] = endTime.split(":").map(Number);
-
-      const startDateTime = new Date(startDate);
-      startDateTime.setHours(startH, startM, 0, 0);
-
-      const endDateTime = new Date(startDate);
-      endDateTime.setHours(endH, endM, 0, 0);
-
-      if (startTime >= endTime) {
-        endDateTime.setDate(endDateTime.getDate() + 1);
-      }
-
-      const ONE_MIN = 60 * 1000;
-
-      let weekday_00_06 = 0;
-      let weekday_18_24 = 0;
-      let weekend = 0;
-
-      let current = startDateTime;
-
-      while (current < endDateTime) {
-        const next = new Date(Math.min(+current + ONE_MIN, +endDateTime));
-
-        const day = current.getDay();
-        const hour = current.getHours() + current.getMinutes() / 60;
-
-        const isWeekendOrHoliday = day === 0 || day === 6 || isHoliday(current); // Sunday=0, Saturday=6
-        const dur = (next - current) / (1000 * 60 * 60); // preliminary duration
-
-        if (isWeekendOrHoliday) {
-          weekend += dur;
-        } else {
-          if (hour < 6) {
-            weekday_00_06 += dur;
-          } else if (hour >= 18) {
-            weekday_18_24 += dur;
-          }
-        }
-
-        current = next;
-      }
-      return weekday_00_06 + weekday_18_24 + weekend;
-    }
-
     function calculateTotalShiftHours(startTime, endTime) {
       const [sh, sm] = startTime.split(":").map(Number);
       const [eh, em] = endTime.split(":").map(Number);
@@ -360,7 +314,7 @@ document.addEventListener("DOMContentLoaded", () => {
         start,
         end,
         roomtime: totalRoomMinutes / 60, // Legacy support
-        breaks: breaks, // New detailed support
+        inaktive_perioder: breaks, // New detailed support
       });
 
       saveShifts();
