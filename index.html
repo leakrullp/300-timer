@@ -23,6 +23,14 @@
 
         gtag('config', 'G-YQEBJBNJV2');
     </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
 </head>
 
 <body>
@@ -63,7 +71,7 @@
                     </div>
 
                     <label>
-                        Dato<span style="color: red;">*</span>
+                        Dato du møder ind<span style="color: red;">*</span>
                         <input type="date" id="date" required>
                     </label>
 
@@ -74,25 +82,62 @@
                         </label>
 
                         <label>
-                            Sluttidspunkt<span style="color: red;">*</span>
+                            Sluttidspunkt<span style="color:red">*</span>
+
+                            <span class="info-tooltip">
+                                ⓘ
+                                <span class="tooltip-text">
+                                    Vagter kan højst være 24 timer lange.
+                                </span>
+                            </span>
+
                             <input type="time" id="end" required>
                         </label>
                     </div>
-                    <p>Der tages automatisk højde for sluttidspunkter der ligger i det efterfølgende døgn.</p>
 
                     <label>
-                        Tid på vagtværelse i <a href="howto.html#timespan">tillægstidrummet:</a>
+                        <h3>Tid på vagtværelse/i rådighed <span class="info-tooltip">
+                                ⓘ
+                                <span class="tooltip-text">
+                                    Disse vil blive tolket som ikke-aktive rådighedstimer.
+                                </span>
+                            </span></h3>
+
                         <div class="form-group">
-                            <input type="number" id="myHours" placeholder="Timer" min="0" max="23">
-                            <input type="number" id="myMinutes" placeholder="Minutter" min="0" max="59">
+                            <label>
+                                Første aftrædelse
+                                <span class="info-tooltip">
+                                    ⓘ
+                                    <span class="tooltip-text">
+                                        Vi behøver ikke vide, hvornår du har en fast aftale om fratrædelse.
+                                        Du skal blot angive det tidligste tidspunkt, hvor du reelt er trådt fra. Det kan
+                                        både være når I har aftalt det eller senere, hvis der var travlt.
+                                    </span>
+                                </span>
+                                <input type="time" name="startOfBreak[]">
+                            </label>
+                            <label>
+                                Blev kaldt kl.
+                                <span class="info-tooltip">
+                                    ⓘ
+                                    <span class="tooltip-text">
+                                        Dette felt skal være tomt, hvis du ikke blev kaldt efter aftrædelse.
+                                    </span>
+                                </span>
+                                <input type="time" name="endOfBreak[]">
+                            </label>
                         </div>
+
+                        <div id="additional-breaks"></div>
+
+                        <button id="add-break-btn" class="rm-from-print rm-btn secondary-btn" type="button">
+                            Tilføj linje</button>
+
                     </label>
 
                     <div class="btn-group">
-                        <button type="reset" class="secondary-btn">
-                            Ryd formular</button>
-                        <button type="submit" class="primary-btn">
-                            Gem vagt</button>
+                        <button type="reset" class="secondary-btn">Ryd formular</button>
+                        <button type="submit" class="primary-btn">Gem vagt</button>
                     </div>
                 </form>
             </aside>
@@ -105,16 +150,16 @@
                         <h1>Mine vagter</h1>
                         <!-- Buttons -->
                         <div class="btn-group rm-from-print">
-                            <button class="secondary-btn" onclick="clearStorage()">Ryd al data</button>
-                            <button class="primary-btn" onclick="printPage()">🖨️ Udskriv mine vagter</button>
+                            <button class="secondary-btn" onclick="clearShiftStorage()">Ryd al data</button>
+                            <button class="primary-btn" onclick="window.print()">🖨️ Udskriv mine vagter</button>
                         </div>
                     </div>
 
                     <label>
                         <input type="checkbox" name="include-hours" value="yes">
-                        Tid på vagtværelse er tillægsgivende
+                        Rådighedstimer / timer på værelse er tillægsgivende
                     </label>
-                    <h2>Tillægsgivende timer i perioden: <span style="font-weight: 800;" id="total-hours">0</span>
+                    <h2>Dine tillægsgivende timer i perioden: <span style="font-weight: 800;" id="total-hours">0</span>
                         / 300</h2>
                     <div class="table-wrapper">
                         <table class="shift-table">
@@ -124,8 +169,8 @@
                                     <th>Dato</th>
                                     <th>Start</th>
                                     <th>Slut</th>
-                                    <th>Timer på vagt</th>
-                                    <th>Værelses<wbr>timer</th>
+                                    <th>Vagtens længe</th>
+                                    <th>Aktive timer</th>
                                     <th>Tillægs<wbr>givende timer</th>
                                     <th></th>
                                 </tr>
@@ -156,6 +201,7 @@
         </p>
     </footer>
     <script src="script.js"></script>
+    <script src="utils.js"></script>
     <script src="helligdage.js"></script>
 </body>
 
