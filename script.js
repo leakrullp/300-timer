@@ -178,7 +178,10 @@ document.addEventListener("DOMContentLoaded", () => {
         if (includeRoomtime) {
           // Logic: Ignore breaks. Calculate all eligible window hours.
           // We pass a temporary object without breaks to our smart function.
-          finalEligibleHours = calculateEligibleHours({ ...s, breaks: [] });
+          finalEligibleHours = calculateEligibleHours({
+            ...s,
+            breaks: [],
+          });
         } else {
           // Logic: Smart deduction. Only count minutes that are Eligible AND NOT a break.
           finalEligibleHours = calculateEligibleHours(s);
@@ -291,7 +294,7 @@ document.addEventListener("DOMContentLoaded", () => {
         );
       }
 
-      let breaks = [];
+      let breaksArray = [];
       let totalRoomMinutes = 0;
 
       for (let i = 0; i < startInputs.length; i++) {
@@ -301,7 +304,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (sVal) {
           const endValue = eVal || end; // if empty → use shift end
 
-          breaks.push({ start: sVal, end: endValue });
+          breaksArray.push({ start: sVal, end: endValue });
 
           let diff = calculateDiffMinutes(sVal, endValue);
           totalRoomMinutes += diff;
@@ -314,7 +317,7 @@ document.addEventListener("DOMContentLoaded", () => {
         start,
         end,
         roomtime: totalRoomMinutes / 60, // Legacy support
-        inaktive_perioder: breaks, // New detailed support
+        breaks: breaksArray, // New detailed support
       });
 
       saveShifts();
