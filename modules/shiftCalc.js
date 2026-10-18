@@ -63,7 +63,7 @@ export function formatShiftDate(dateString) {
 }
 
 // Helper for duration
-function calculateDiffMinutes(s, e) {
+export function calculateDiffMinutes(s, e) {
   const [sh, sm] = s.split(":").map(Number);
   const [eh, em] = e.split(":").map(Number);
   let diff = eh * 60 + em - (sh * 60 + sm);

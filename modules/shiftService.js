@@ -67,6 +67,18 @@ export function renderShifts(totalEl, shifts, list, includeRoomCheckbox) {
     sumActive += activeHours;
     sumTotal += finalEligibleHours;
 
+    const tooltip =
+      activeHours === finalEligibleHours
+        ? `
+      <span class="info-tooltip">
+        ⓘ
+        <span class="tooltip-text">
+          Vagter kan højst være 24 timer lange.
+        </span>
+      </span>
+    `
+        : "";
+
     // Create row
     const row = document.createElement("tr");
     row.innerHTML = `
@@ -75,12 +87,15 @@ export function renderShifts(totalEl, shifts, list, includeRoomCheckbox) {
       <td>${s.start}</td>
       <td>${s.end}</td>
       <td>${formatHours(shiftLength)}</td>
-      <td>${formatHours(activeHours)}</td>
-      <td>${formatHours(finalEligibleHours)}</td>
+      <td>${formatHours(activeHours)}
+      </td>
+      <td>${formatHours(finalEligibleHours)}
+      </td>
       <td>
         <button class="rm-from-print rm-btn secondary-btn"
                 type="button"
                 onclick="deleteShift(${index})">Fjern</button>
+
       </td>
     `;
     list.appendChild(row);

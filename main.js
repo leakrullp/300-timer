@@ -3,6 +3,7 @@ import {
   saveShifts,
   clearShiftStorage,
 } from "./modules/shiftService.js";
+import { calculateDiffMinutes } from "./modules/shiftCalc.js";
 import {
   animateBurgerMenu,
   closeMenuWhenLinkIsClicked,
