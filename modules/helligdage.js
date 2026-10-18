@@ -40,8 +40,8 @@ const helligdage = {
     andenJuledag: new Date("2028-12-26"),
   },
 };
-//global function
-window.isHoliday = function (dateStr) {
+
+function isHoliday(dateStr) {
   const date = new Date(dateStr);
   const year = date.getFullYear();
 
@@ -51,6 +51,15 @@ window.isHoliday = function (dateStr) {
     (holiday) =>
       holiday.getFullYear() === date.getFullYear() &&
       holiday.getMonth() === date.getMonth() &&
-      holiday.getDate() === date.getDate()
+      holiday.getDate() === date.getDate(),
   );
-};
+}
+
+// Helper to keep logic clean
+export default function isSupplementTime(date) {
+  const day = date.getDay();
+  const hour = date.getHours();
+  if (isHoliday(date) || day === 0 || day === 6) return true; // Weekend/Holiday
+  if (hour >= 18 || hour < 6) return true; // Weeknight
+  return false;
+}
