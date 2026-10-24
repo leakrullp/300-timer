@@ -67,18 +67,6 @@ export function renderShifts(totalEl, shifts, list, includeRoomCheckbox) {
     sumActive += activeHours;
     sumTotal += finalEligibleHours;
 
-    const tooltip =
-      activeHours === finalEligibleHours
-        ? `
-      <span class="info-tooltip">
-        ⓘ
-        <span class="tooltip-text">
-          Vagter kan højst være 24 timer lange.
-        </span>
-      </span>
-    `
-        : "";
-
     // Create row
     const row = document.createElement("tr");
     row.innerHTML = `
