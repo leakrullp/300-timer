@@ -60,6 +60,6 @@ export default function isSupplementTime(date) {
   const day = date.getDay();
   const hour = date.getHours();
   if (isHoliday(date) || day === 0 || day === 6) return true; // Weekend/Holiday
-  if (hour >= 18 || hour < 6) return true; // Weeknight
+  if (hour >= 17 || hour < 6) return true; // Weeknight
   return false;
 }
